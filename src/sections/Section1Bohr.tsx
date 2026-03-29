@@ -3,9 +3,42 @@ import { motion } from 'motion/react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Quiz } from '../components/ui/quiz';
 import { Button } from '../components/ui/button';
-import { Atom, Zap } from 'lucide-react';
+import { Atom, Zap, PlayCircle } from 'lucide-react';
 import 'katex/dist/katex.min.css';
 import { InlineMath, BlockMath } from 'react-katex';
+
+const videoResources = [
+  {
+    id: 'njGz69B_pUg',
+    title: 'History of the Atom',
+    description:
+      'This video traces the chronological development of atomic theory. It begins with the early philosophical ideas of Democritus and moves through the scientific milestones of Dalton, Thompson\u2019s \u201cplum pudding\u201d model, and Rutherford\u2019s gold foil experiment. It concludes by introducing how Bohr and later quantum physicists like Schr\u00f6dinger and Heisenberg refined the model to include electron probability and the discovery of the neutron.',
+  },
+  {
+    id: 'au2HCVn9IJI',
+    title: 'Bohr Model of the Hydrogen Atom',
+    description:
+      'Focusing specifically on the mechanics of the Bohr model, this video explains how energy quantization solves the problem of atomic stability. It details how electrons occupy fixed energy levels and transition between them by absorbing or emitting photons of specific frequencies. It also introduces the Lyman and Balmer series, explaining how these transitions create the unique \u201cfingerprint\u201d of an element\u2019s emission spectrum.',
+  },
+  {
+    id: '_Gt7mo8SNkA',
+    title: 'What is the Bohr Model of the Atom?',
+    description:
+      'This video provides a deep dive into the mathematical and theoretical foundations of Bohr\u2019s work. It explores the conflict between classical electromagnetism and the observed stability of atoms, explaining Bohr\u2019s four postulates\u2014including the quantization of angular momentum. It walks through the derivation of the Bohr radius and the specific energy levels for hydrogen, ending with how these constants align with experimental data.',
+  },
+  {
+    id: 'GhAn8xZQ-d8',
+    title: 'The Bohr Atom',
+    description:
+      'This overview highlights the \u201cladder\u201d analogy for electron energy levels, where electrons must exist at specific rungs and never in between. It emphasizes how the Bohr model successfully predicted the observed spectral lines in space that classical physics could not explain. The video also touches on how the periodic table\u2019s organization is fundamentally rooted in these electron energy states.',
+  },
+  {
+    id: 'y9kWdegtrs0',
+    title: "Understanding Bohr's Atom: Postulates and Limitations",
+    description:
+      'While reinforcing the key postulates of circular orbits and discrete energy jumps, this video also addresses the scientific shortcomings of the Bohr model. It discusses why the model only works perfectly for hydrogen and fails to explain more complex atoms, the varying intensities of spectral lines, or the \u201cZeeman effect\u201d (the splitting of lines in a magnetic field).',
+  },
+];
 
 export function Section1Bohr() {
   const [electronLevel, setElectronLevel] = useState(1);
@@ -47,7 +80,7 @@ export function Section1Bohr() {
       <div className="prose prose-invert max-w-none mb-12 text-slate-300">
         <h3 className="text-2xl font-semibold text-blue-400 mb-4">Early History & The Planetary Model</h3>
         <p>In 1803, <strong>John Dalton</strong> developed an atomic theory backed by careful chemical measurements, proposing that matter is composed of indivisible atoms, all atoms of an element are identical, and compounds are bonded combinations of different elements. Later, in 1903, <strong>J.J. Thomson</strong> proposed the "plum-pudding" model, suggesting the atom was a positively charged sphere with electrons distributed inside.</p>
-        <p>This changed in 1911 due to <strong>Ernest Rutherford</strong>. In 1909, Hans Geiger and Ernest Marsden conducted the <em>gold foil experiment</em>. Firing dense α particles at a thin gold foil, they expected them to pass straight through. Instead, some were deflected drastically. Using Coulomb's and Newton's laws, Rutherford concluded that almost all the atom's mass and positive charge is concentrated in a tiny central core called the <strong>nucleus</strong>, meaning the atom is mostly empty space.</p>
+        <p>This changed in 1911 due to <strong>Ernest Rutherford</strong>. In 1909, Hans Geiger and Ernest Marsden conducted the <em>gold foil experiment</em>. Firing dense \u03b1 particles at a thin gold foil, they expected them to pass straight through. Instead, some were deflected drastically. Using Coulomb's and Newton's laws, Rutherford concluded that almost all the atom's mass and positive charge is concentrated in a tiny central core called the <strong>nucleus</strong>, meaning the atom is mostly empty space.</p>
         
         <h3 className="text-2xl font-semibold text-blue-400 mt-8 mb-4">Problems with the Planetary Model</h3>
         <ul className="list-disc pl-6 space-y-2">
@@ -61,7 +94,7 @@ export function Section1Bohr() {
           <p className="mb-4">Einstein's theory defines the energy of a light photon as <InlineMath math="hf" />, where <InlineMath math="h" /> is Planck's constant and <InlineMath math="f" /> is frequency. When an electron transitions, the emitted photon's energy is:</p>
           <div className="text-center text-xl mb-6"><BlockMath math="hf = E_{higher} - E_{lower}" /></div>
           <p className="mb-4">For a hydrogen atom, the energy of an electron in a given energy level <InlineMath math="n" /> is calculated by:</p>
-          <div className="text-center text-xl"><BlockMath math="E_n = (-2.17 \times 10^{-18} \text{ J}) \left(\frac{1}{n^2}\right)" /></div>
+          <div className="text-center text-xl"><BlockMath math="E_n = (-2.17 \\times 10^{-18} \\text{ J}) \\left(\\frac{1}{n^2}\\right)" /></div>
         </div>
       </div>
 
@@ -189,6 +222,34 @@ export function Section1Bohr() {
           }
         ]}
       />
+
+      {/* Video Resources */}
+      <div className="mt-12 p-8 bg-slate-900/50 rounded-xl border border-slate-800">
+        <div className="flex items-center gap-3 mb-8 pb-4 border-b border-slate-800">
+          <PlayCircle className="w-6 h-6 text-emerald-400" />
+          <h3 className="text-2xl font-semibold text-emerald-400">Video Resources</h3>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {videoResources.map((video) => (
+            <div
+              key={video.id}
+              className="bg-slate-800/50 border border-slate-700 rounded-xl p-5 transition-all duration-300 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(52,211,153,0.1)]"
+            >
+              <h4 className="text-base font-semibold text-blue-400 mb-3">{video.title}</h4>
+              <div className="relative w-full pb-[56.25%] h-0 overflow-hidden rounded-lg mb-4">
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full rounded-lg"
+                  src={`https://www.youtube.com/embed/${video.id}`}
+                  title={video.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
+              <p className="text-slate-400 text-sm leading-relaxed">{video.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

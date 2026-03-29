@@ -94,7 +94,7 @@ export function Section1Bohr() {
           <p className="mb-4">Einstein's theory defines the energy of a light photon as <InlineMath math="hf" />, where <InlineMath math="h" /> is Planck's constant and <InlineMath math="f" /> is frequency. When an electron transitions, the emitted photon's energy is:</p>
           <div className="text-center text-xl mb-6"><BlockMath math="hf = E_{higher} - E_{lower}" /></div>
           <p className="mb-4">For a hydrogen atom, the energy of an electron in a given energy level <InlineMath math="n" /> is calculated by:</p>
-          <div className="text-center text-xl"><BlockMath math="E_n = (-2.17 \\times 10^{-18} \\text{ J}) \\left(\\frac{1}{n^2}\\right)" /></div>
+          <div className="text-center text-xl"><BlockMath math="E_n = (-2.17 \times 10^{-18} \text{ J}) \left(\frac{1}{n^2}\right)" /></div>
         </div>
       </div>
 
@@ -229,7 +229,7 @@ export function Section1Bohr() {
           <PlayCircle className="w-6 h-6 text-emerald-400" />
           <h3 className="text-2xl font-semibold text-emerald-400">Video Resources</h3>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="flex flex-col gap-6">
           {videoResources.map((video) => (
             <div
               key={video.id}

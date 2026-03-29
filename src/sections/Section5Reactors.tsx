@@ -2,12 +2,40 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Quiz } from '../components/ui/quiz';
-import { AlertTriangle, Power, Thermometer } from 'lucide-react';
+import { AlertTriangle, Power, Thermometer, PlayCircle } from 'lucide-react';
 import { BlockMath } from 'react-katex';
 
+const videoResources = [
+  {
+    id: '1U6Nzcv9Vws',
+    title: `Nuclear Reactor - Understanding how it works`,
+    description: `This video provides a clear breakdown of the three essential components of a fission reactor: the fuel elements (uranium rods), the moderator (water used to slow down neutrons), and the control rods (boron or cadmium used to absorb excess neutrons). It explains the necessity of a moderator by noting that high-energy neutrons are 500 times less likely to trigger a new fission reaction than "thermal" (slowed) neutrons.`,
+  },
+  {
+    id: '5hASAKEIisc',
+    title: `How Nuclear Fission Reactors Work`,
+    description: `Focusing on the thermodynamics of power generation, this video explains how the reactor's heat is transferred through a primary loop of pressurized water to a secondary steam loop. This steam then spins a turbine to generate electricity. It also addresses the "startup" problem, noting that random spontaneous fission of Uranium-238 provides the initial neutrons needed to ignite the chain reaction.`,
+  },
+  {
+    id: 'X49o8x0WM4w',
+    title: `Going Nuclear with Neil deGrasse Tyson`,
+    description: `Tyson explores the physics of the "strong force" and how it acts as the glue of the nucleus until it is overcome by neutron bombardment. He clarifies the concept of critical mass—the minimum amount of fissile material needed to sustain a chain reaction. The video also touches on the "supernova" process in stars, where fusion stops at iron because fusing iron actually consumes energy rather than releasing it.`,
+  },
+  {
+    id: 'm6MgEbbrTUM',
+    title: `What Are Fast Breeder Reactors?`,
+    description: `This video explains the unique design of breeder reactors, which do not use a moderator. By utilizing "fast" neutrons, these reactors convert non-fissile Uranium-238 into Plutonium-239, effectively breeding more fuel than they consume. It also discusses the use of liquid sodium as a coolant, chosen because it doesn't slow down neutrons, and mentions the military and proliferation concerns surrounding plutonium production.`,
+  },
+  {
+    id: 'UN--w0CZZ4o',
+    title: `4 Nuclear Reactor Types EXPLAINED`,
+    description: `This summary categorizes reactors into four types: Power reactors for electricity, Breeder reactors for fuel sustainability, Research/Test reactors (which act as neutron sources rather than power plants), and Transport reactors used in submarines and icebreakers. It highlights that transport reactors often use much higher levels of uranium enrichment (over 80%) compared to the 3-5% used in civilian power plants.`,
+  },
+];
+
 export function Section5Reactors() {
-  const [controlRodLevel, setControlRodLevel] = useState(50); // 0 = fully inserted (off), 100 = fully removed (max power)
-  const [temperature, setTemperature] = useState(300); // Base temp
+  const [controlRodLevel, setControlRodLevel] = useState(50);
+  const [temperature, setTemperature] = useState(300);
   const [powerOutput, setPowerOutput] = useState(0);
   const [isMeltdown, setIsMeltdown] = useState(false);
 
@@ -16,20 +44,18 @@ export function Section5Reactors() {
 
     if (!isMeltdown) {
       interval = setInterval(() => {
-        // Power output is directly proportional to control rod removal
         const targetPower = controlRodLevel * 10;
         setPowerOutput(prev => {
           const diff = targetPower - prev;
           return prev + diff * 0.1;
         });
 
-        // Temperature rises with power, but cooling system tries to keep it down
         const cooling = 50;
         const heatGeneration = (controlRodLevel / 100) * 150;
         
         setTemperature(prev => {
           let newTemp = prev + heatGeneration - cooling;
-          if (newTemp < 300) newTemp = 300; // Minimum temp
+          if (newTemp < 300) newTemp = 300;
           
           if (newTemp > 1200) {
             setIsMeltdown(true);
@@ -231,6 +257,34 @@ export function Section5Reactors() {
           }
         ]}
       />
+
+      {/* Video Resources */}
+      <div className="mt-12 p-8 bg-slate-900/50 rounded-xl border border-slate-800">
+        <div className="flex items-center gap-3 mb-8 pb-4 border-b border-slate-800">
+          <PlayCircle className="w-6 h-6 text-emerald-400" />
+          <h3 className="text-2xl font-semibold text-emerald-400">Video Resources</h3>
+        </div>
+        <div className="flex flex-col gap-6">
+          {videoResources.map((video) => (
+            <div
+              key={video.id}
+              className="bg-slate-800/50 border border-slate-700 rounded-xl p-5 transition-all duration-300 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(52,211,153,0.1)]"
+            >
+              <h4 className="text-base font-semibold text-blue-400 mb-3">{video.title}</h4>
+              <div className="relative w-full pb-[56.25%] h-0 overflow-hidden rounded-lg mb-4">
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full rounded-lg"
+                  src={`https://www.youtube.com/embed/${video.id}`}
+                  title={video.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
+              <p className="text-slate-400 text-sm leading-relaxed">{video.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

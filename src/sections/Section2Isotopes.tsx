@@ -2,8 +2,36 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Quiz } from '../components/ui/quiz';
-import { CircleDot, Plus, Minus } from 'lucide-react';
+import { CircleDot, Plus, Minus, PlayCircle } from 'lucide-react';
 import { BlockMath, InlineMath } from 'react-katex';
+
+const videoResources = [
+  {
+    id: 'faB9Gb7bl9I',
+    title: `What are Isotopes? | Chemistry Basics`,
+    description: `This video provides a foundational look at isotopes, defining them as atoms with the same number of protons but different numbers of neutrons. It introduces the mass spectrograph as the tool used to identify them and explains the critical difference between chemical reactions (driven by electrons) and nuclear reactions (driven by the nucleus). It also briefly introduces alpha, beta, and gamma decay as ways unstable nuclei seek stability.`,
+  },
+  {
+    id: 'AtmD-qogkXg',
+    title: `Everything You Need to Know About Isotopes`,
+    description: `Using a conversational approach, this video explains how protons define an element's identity and how the "strong force" (mediated by gluons) holds them together despite their electromagnetic repulsion. It uses carbon-14 dating as a primary example to show how we use the decay of unstable isotopes to determine the age of organic materials. It also highlights "heavy water" (deuterium) and helium-3 as notable isotopes found in nature and space.`,
+  },
+  {
+    id: 'UYvx0O8itMA',
+    title: `What Are Radioactive Isotopes?`,
+    description: `This video uses the analogy of a person carrying too many boxes to explain why certain nuclei are unstable. It explains that while many isotopes are stable, those with too many or too few neutrons relative to protons will spontaneously rearrange and eject particles (radioactive decay). It also highlights practical applications of these "radioisotopes" in medicine, such as technetium-99 used as a medical tracer.`,
+  },
+  {
+    id: 'hTY9tfGUWKE',
+    title: `Nuclear Stability`,
+    description: `Focusing on the "Band of Stability," this video teaches how to predict if an atom will be stable by looking at its proton-to-neutron ratio. It explains that for smaller atoms, a 1:1 ratio is typical for stability, but as nuclei get larger, they require significantly more neutrons to buffer the repulsion between protons. Atoms falling outside this "band" are unstable and will undergo decay.`,
+  },
+  {
+    id: 'xTfCbD4sKKE',
+    title: `Difference between Stable & Radioactive Isotopes & Their Applications`,
+    description: `This deep dive distinguishes between stable isotopes, which do not decay and are used to reconstruct ancient climates (paleoclimate), and radioactive isotopes used for dating rocks (geochronology). It explains "isotope fractionation"—how natural processes like evaporation or photosynthesis preferentially use lighter or heavier isotopes—allowing scientists to read the "fingerprints" left in the rock record to understand Earth's history.`,
+  },
+];
 
 export function Section2Isotopes() {
   const [protons, setProtons] = useState(1);
@@ -182,6 +210,34 @@ export function Section2Isotopes() {
           }
         ]}
       />
+
+      {/* Video Resources */}
+      <div className="mt-12 p-8 bg-slate-900/50 rounded-xl border border-slate-800">
+        <div className="flex items-center gap-3 mb-8 pb-4 border-b border-slate-800">
+          <PlayCircle className="w-6 h-6 text-emerald-400" />
+          <h3 className="text-2xl font-semibold text-emerald-400">Video Resources</h3>
+        </div>
+        <div className="flex flex-col gap-6">
+          {videoResources.map((video) => (
+            <div
+              key={video.id}
+              className="bg-slate-800/50 border border-slate-700 rounded-xl p-5 transition-all duration-300 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(52,211,153,0.1)]"
+            >
+              <h4 className="text-base font-semibold text-blue-400 mb-3">{video.title}</h4>
+              <div className="relative w-full pb-[56.25%] h-0 overflow-hidden rounded-lg mb-4">
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full rounded-lg"
+                  src={`https://www.youtube.com/embed/${video.id}`}
+                  title={video.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
+              <p className="text-slate-400 text-sm leading-relaxed">{video.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

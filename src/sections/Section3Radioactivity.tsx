@@ -3,8 +3,36 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Quiz } from '../components/ui/quiz';
-import { Radio, Shield, ShieldAlert, ShieldCheck } from 'lucide-react';
+import { Radio, Shield, ShieldAlert, ShieldCheck, PlayCircle } from 'lucide-react';
 import { BlockMath, InlineMath } from 'react-katex';
+
+const videoResources = [
+  {
+    id: 'iL02oXZss2Q',
+    title: `Mass Defect and Binding Energy`,
+    description: `This video uses a relatable analogy—breaking a LEGO character apart—to explain why subatomic particles are different. It demonstrates that the mass of a whole helium atom is slightly less than the sum of its individual parts (protons, neutrons, and electrons). This difference, the mass defect, is the energy released (via E=mc²) when the nucleus forms. Conversely, this is the same amount of "binding energy" required to pull the nucleus back apart.`,
+  },
+  {
+    id: 'h9VmWe4w7b8',
+    title: `A 'cheatsheet' on Binding Energy`,
+    description: `This concise guide emphasizes that binding energy is the measure of nuclear stability. It introduces the concept of binding energy per nucleon, which allows for a fair comparison of stability between small atoms like helium and massive ones like uranium. The video highlights the "binding energy curve," showing that Iron (Fe) sits at the peak of stability.`,
+  },
+  {
+    id: 'dvhqzQ-K7K8',
+    title: `Nuclear Radiation Explained`,
+    description: `This video details the physical properties and common uses of radiation. It explains that alpha particles are emitted when a nucleus is too large, while beta particles are released when a nucleus has too many neutrons. It also clarifies that gamma rays are purely energy (photons) released when a nucleus has excess energy. Practical applications discussed include smoke alarms (alpha), thickness gauges (beta), and medical imaging (gamma).`,
+  },
+  {
+    id: 's7zPzBnf6Us',
+    title: `Different types of decay | Visual Explanation`,
+    description: `Focusing on the biological and medical impacts, this video explains the "ionizing power" of different radiation types. Because alpha particles are large, they are highly ionizing but easily stopped by paper or skin. Beta particles are smaller and more penetrating, while gamma rays are the most penetrating, requiring lead or concrete to stop. It also introduces Beta Plus decay (positron emission), which is used in PET scans.`,
+  },
+  {
+    id: 'oFdR_yMKOCw',
+    title: `Radiation and Radioactive Decay`,
+    description: `This video teaches you how to write and balance nuclear equations. It explains how to track changes in the atomic number and mass number during transmutation—for example, showing how Uranium-238 becomes Thorium-234 after emitting an alpha particle. It also uses the "belt of stability" graph to show how atoms use radioactive decay to reach a more stable ratio of protons to neutrons.`,
+  },
+];
 
 export function Section3Radioactivity() {
   const [activeDecay, setActiveDecay] = useState<'alpha' | 'beta' | 'gamma' | null>(null);
@@ -213,6 +241,34 @@ export function Section3Radioactivity() {
           }
         ]}
       />
+
+      {/* Video Resources */}
+      <div className="mt-12 p-8 bg-slate-900/50 rounded-xl border border-slate-800">
+        <div className="flex items-center gap-3 mb-8 pb-4 border-b border-slate-800">
+          <PlayCircle className="w-6 h-6 text-emerald-400" />
+          <h3 className="text-2xl font-semibold text-emerald-400">Video Resources</h3>
+        </div>
+        <div className="flex flex-col gap-6">
+          {videoResources.map((video) => (
+            <div
+              key={video.id}
+              className="bg-slate-800/50 border border-slate-700 rounded-xl p-5 transition-all duration-300 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(52,211,153,0.1)]"
+            >
+              <h4 className="text-base font-semibold text-blue-400 mb-3">{video.title}</h4>
+              <div className="relative w-full pb-[56.25%] h-0 overflow-hidden rounded-lg mb-4">
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full rounded-lg"
+                  src={`https://www.youtube.com/embed/${video.id}`}
+                  title={video.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
+              <p className="text-slate-400 text-sm leading-relaxed">{video.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

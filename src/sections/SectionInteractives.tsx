@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ArrowLeft, ExternalLink, FlaskConical, Radiation } from 'lucide-react';
+import React from 'react';
+import { ExternalLink, FlaskConical, Radiation } from 'lucide-react';
 import { motion } from 'motion/react';
 
 interface Interactive {
@@ -16,7 +16,7 @@ const interactives: Interactive[] = [
     id: 'decay-chain',
     title: 'Nuclear Decay Chain Visualizer',
     description:
-      'Explore the four major radioactive decay series interactively. Predict the next isotope at each step by choosing between alpha and beta decay, and watch the chain unfold on a proton–neutron chart.',
+      'Explore the four major radioactive decay series interactively. Predict the next isotope at each step by choosing between alpha and beta decay, and watch the chain unfold on a proton\u2013neutron chart.',
     url: 'https://lennoxmeldrum.github.io/nuclear-decay-chain/',
     icon: <FlaskConical className="w-8 h-8" />,
     color: 'indigo',
@@ -50,41 +50,6 @@ const colorMap: Record<string, { bg: string; border: string; text: string; hover
 };
 
 export function SectionInteractives() {
-  const [activeApp, setActiveApp] = useState<Interactive | null>(null);
-
-  if (activeApp) {
-    return (
-      <div className="flex flex-col h-[calc(100vh-12rem)]">
-        <div className="flex items-center gap-4 mb-4">
-          <button
-            onClick={() => setActiveApp(null)}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 hover:text-white hover:border-slate-600 transition-colors text-sm font-medium"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Interactives
-          </button>
-          <h2 className="text-lg font-semibold text-white">{activeApp.title}</h2>
-          <a
-            href={activeApp.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ml-auto flex items-center gap-1.5 text-sm text-slate-400 hover:text-white transition-colors"
-          >
-            Open in new tab <ExternalLink className="w-3.5 h-3.5" />
-          </a>
-        </div>
-        <div className="flex-1 rounded-xl overflow-hidden border border-slate-700">
-          <iframe
-            src={activeApp.url}
-            title={activeApp.title}
-            className="w-full h-full border-0"
-            allow="fullscreen"
-          />
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div>
       <div className="text-center mb-10">
@@ -100,15 +65,20 @@ export function SectionInteractives() {
         {interactives.map((app) => {
           const colors = colorMap[app.color];
           return (
-            <motion.button
+            <motion.a
               key={app.id}
-              onClick={() => setActiveApp(app)}
+              href={app.url}
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className={`text-left p-6 rounded-xl border ${colors.border} ${colors.hoverBorder} ${colors.bg} backdrop-blur-sm transition-colors cursor-pointer group`}
+              className={`block text-left p-6 rounded-xl border ${colors.border} ${colors.hoverBorder} ${colors.bg} backdrop-blur-sm transition-colors cursor-pointer group`}
             >
-              <div className={`w-14 h-14 rounded-xl ${colors.iconBg} flex items-center justify-center ${colors.text} mb-4`}>
-                {app.icon}
+              <div className="flex items-start justify-between mb-4">
+                <div className={`w-14 h-14 rounded-xl ${colors.iconBg} flex items-center justify-center ${colors.text}`}>
+                  {app.icon}
+                </div>
+                <ExternalLink className="w-4 h-4 text-slate-500 group-hover:text-slate-300 transition-colors" />
               </div>
               <h3 className="text-lg font-semibold text-white mb-2 group-hover:underline decoration-1 underline-offset-4">
                 {app.title}
@@ -116,7 +86,7 @@ export function SectionInteractives() {
               <p className="text-sm text-slate-400 leading-relaxed">
                 {app.description}
               </p>
-            </motion.button>
+            </motion.a>
           );
         })}
       </div>

@@ -4,7 +4,8 @@ import { Section2Isotopes } from './sections/Section2Isotopes';
 import { Section3Radioactivity } from './sections/Section3Radioactivity';
 import { Section4Reactions } from './sections/Section4Reactions';
 import { Section5Reactors } from './sections/Section5Reactors';
-import { Atom, CircleDot, Radio, Activity, Power } from 'lucide-react';
+import { SectionInteractives } from './sections/SectionInteractives';
+import { Atom, CircleDot, Radio, Activity, Power, Gamepad2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
     { id: 2, title: "Radioactivity", icon: <Radio className="w-5 h-5" />, component: <Section3Radioactivity /> },
     { id: 3, title: "Reactions", icon: <Activity className="w-5 h-5" />, component: <Section4Reactions /> },
     { id: 4, title: "Reactors", icon: <Power className="w-5 h-5" />, component: <Section5Reactors /> },
+    { id: 5, title: "Interactives", icon: <Gamepad2 className="w-5 h-5" />, component: <SectionInteractives /> },
   ];
 
   return (

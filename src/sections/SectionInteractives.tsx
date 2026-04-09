@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink, FlaskConical, Radiation } from 'lucide-react';
+import { Calculator, ExternalLink, FlaskConical, Radiation } from 'lucide-react';
 import { motion } from 'motion/react';
 
 interface Interactive {
@@ -30,6 +30,15 @@ const interactives: Interactive[] = [
     icon: <Radiation className="w-8 h-8" />,
     color: 'blue',
   },
+  {
+    id: 'nuclear-calculations',
+    title: 'Nuclear Calculations Practice',
+    description:
+      'Work through 8 calculation topics — Bohr model energy levels, orbit radii, mass defect, binding energy, nuclear equations, isotopic abundance, and radioactive half-life — with full worked examples and multiple-choice practice problems.',
+    url: 'https://lennoxmeldrum.github.io/nuclear-calculations/',
+    icon: <Calculator className="w-8 h-8" />,
+    color: 'emerald',
+  },
 ];
 
 const colorMap: Record<string, { bg: string; border: string; text: string; hoverBorder: string; iconBg: string }> = {
@@ -46,6 +55,13 @@ const colorMap: Record<string, { bg: string; border: string; text: string; hover
     text: 'text-blue-400',
     hoverBorder: 'hover:border-blue-500/60',
     iconBg: 'bg-blue-500/20',
+  },
+  emerald: {
+    bg: 'bg-emerald-500/10',
+    border: 'border-emerald-500/30',
+    text: 'text-emerald-400',
+    hoverBorder: 'hover:border-emerald-500/60',
+    iconBg: 'bg-emerald-500/20',
   },
 };
 

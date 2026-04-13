@@ -17,7 +17,7 @@ const interactives: Interactive[] = [
     title: 'Nuclear Decay Chain Visualizer',
     description:
       'Explore the four major radioactive decay series interactively. Predict the next isotope at each step by choosing between alpha and beta decay, and watch the chain unfold on a proton\u2013neutron chart.',
-    url: 'https://lennoxmeldrum.github.io/nuclear-decay-chain/',
+    url: 'https://explainsims.com/nuclear-decay-chain/',
     icon: <FlaskConical className="w-8 h-8" />,
     color: 'indigo',
   },
@@ -26,7 +26,7 @@ const interactives: Interactive[] = [
     title: 'XKCD Radiation Dose Explorer',
     description:
       'A guided walkthrough of the famous XKCD radiation dose chart. Step through everyday, medical, and industrial radiation exposures to build an intuition for how ionising radiation doses compare.',
-    url: 'https://lennoxmeldrum.github.io/xkcd-radation/',
+    url: 'https://explainsims.com/xkcd-radation/',
     icon: <Radiation className="w-8 h-8" />,
     color: 'blue',
   },
@@ -35,7 +35,7 @@ const interactives: Interactive[] = [
     title: 'Nuclear Calculations Practice',
     description:
       'Work through 8 calculation topics — Bohr model energy levels, orbit radii, mass defect, binding energy, nuclear equations, isotopic abundance, and radioactive half-life — with full worked examples and multiple-choice practice problems.',
-    url: 'https://lennoxmeldrum.github.io/nuclear-calculations/',
+    url: 'https://explainsims.com/nuclear-calculations/',
     icon: <Calculator className="w-8 h-8" />,
     color: 'emerald',
   },
@@ -44,7 +44,7 @@ const interactives: Interactive[] = [
     title: 'Nuclear Reactor Anatomy',
     description:
       'Test your knowledge of reactor components in this drag-and-drop matching exercise. Identify the coolant loop, heat exchanger, control rods, radiation shielding, graphite moderator, fuel rods, and steam output by placing description cards onto the correct parts of the reactor diagram.',
-    url: 'https://lennoxmeldrum.github.io/nuclear-reactor/',
+    url: 'https://explainsims.como/nuclear-reactor/',
     icon: <Zap className="w-8 h-8" />,
     color: 'emerald',
   },

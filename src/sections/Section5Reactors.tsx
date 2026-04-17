@@ -113,7 +113,7 @@ export function Section5Reactors() {
           <img
             src="https://commons.wikimedia.org/wiki/Special:FilePath/Magnox_reactor_schematic.svg"
             alt="Magnox reactor schematic diagram"
-            className="w-full max-w-2xl rounded-lg border border-slate-700 bg-white/5 p-2"
+            className="w-full max-w-2xl rounded-lg border border-slate-700 bg-white p-2"
           />
           <p className="text-sm text-slate-500 mt-2 text-center italic">Schematic diagram of a Magnox reactor (Wikipedia / Public Domain)</p>
         </div>

@@ -106,6 +106,71 @@ export function Section5Reactors() {
           </ul>
         </div>
 
+        <h3 className="text-2xl font-semibold text-yellow-400 mt-8 mb-4">Magnox Reactors</h3>
+        <p>The <strong>Magnox reactor</strong> is an early type of nuclear power reactor developed in the United Kingdom in the 1950s and 1960s. It uses natural (unenriched) uranium metal as fuel, graphite as the moderator to slow neutrons, and carbon dioxide gas as the coolant. The name "Magnox" comes from the magnesium non-oxidising alloy used to clad the fuel rods.</p>
+
+        <div className="my-8 flex flex-col items-center">
+          <img
+            src="https://commons.wikimedia.org/wiki/Special:FilePath/Magnox_reactor_schematic.svg"
+            alt="Magnox reactor schematic diagram"
+            className="w-full max-w-2xl rounded-lg border border-slate-700 bg-white/5 p-2"
+          />
+          <p className="text-sm text-slate-500 mt-2 text-center italic">Schematic diagram of a Magnox reactor (Wikipedia / Public Domain)</p>
+        </div>
+
+        <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-700 my-8">
+          <h4 className="text-xl font-semibold text-yellow-400 mb-6">Step-by-Step Process</h4>
+          <ol className="space-y-5 list-none">
+            {[
+              { title: "The Chain Reaction", text: "Inside the core, uranium atoms inside the fuel rods undergo nuclear fission, splitting apart and releasing massive amounts of heat and fast-moving neutrons." },
+              { title: "Sustaining the Reaction", text: "The graphite moderator slows down these fast neutrons. Neutrons must be moving at a specific, slower speed to successfully split other uranium atoms and keep the chain reaction going." },
+              { title: "Controlling the Heat", text: "Operators move the control rods up and down. If the reactor is getting too hot, they lower the rods to absorb more neutrons, which slows down the fission rate." },
+              { title: "Transferring Heat", text: "A primary coolant enters the bottom of the core by the gas circulator. As it flows up past the burning-hot fuel rods, the coolant becomes superheated." },
+              { title: "Creating Steam", text: "The hot coolant travels through the hot gas duct into the heat exchanger. Here, it flows past pipes filled with water. The heat transfers from the coolant to the water, boiling the water into high-pressure steam." },
+              { title: "Generating Electricity", text: "The steam travels out to a turbine (not pictured). The pressure of the steam forces the turbine blades to spin, which turns an electrical generator using electromagnetic induction." },
+              { title: "Recycling", text: "The coolant, having lost its heat to the water, is now cool. It travels down the cool gas duct and is pumped back into the reactor by the gas circulator to repeat the cycle." },
+            ].map((step, index) => (
+              <li key={index} className="flex gap-4">
+                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-yellow-500/20 border border-yellow-500/50 text-yellow-400 text-sm font-bold flex items-center justify-center">{index + 1}</span>
+                <div>
+                  <strong className="text-white">{step.title}:</strong>{' '}
+                  <span className="text-slate-300">{step.text}</span>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <h4 className="text-xl font-semibold text-yellow-400 mt-8 mb-4">Component Breakdown</h4>
+
+        <div className="space-y-6 my-6">
+          <div className="bg-slate-800/50 p-6 rounded-lg border border-amber-700/40">
+            <h5 className="text-lg font-semibold text-amber-400 mb-4">The Reactor Core</h5>
+            <ul className="space-y-3">
+              <li><strong className="text-white">Fuel Rods:</strong> They contain pellets of Uranium-238 enriched with Uranium-235. This is where the actual nuclear fission takes place.</li>
+              <li><strong className="text-white">Moderator:</strong> This is the section surrounding the fuel rods. It slows down the neutrons produced by fission so they can trigger further fission reactions. Graphite or molten salts are commonly used but an alternative is deuterium/heavy water.</li>
+              <li><strong className="text-white">Control Rods:</strong> These are the rods inserted from the top. Usually made from steel mixed with cadmium or boron, they act like the "brakes" of the reactor. They absorb neutrons to control the rate of the reaction or shut it down completely.</li>
+            </ul>
+          </div>
+
+          <div className="bg-slate-800/50 p-6 rounded-lg border border-blue-700/40">
+            <h5 className="text-lg font-semibold text-blue-400 mb-4">Safety &amp; Containment</h5>
+            <ul className="space-y-3">
+              <li><strong className="text-white">Radiation Shielding:</strong> This is a thick outer wall. Usually made of heavy materials like lead or specialized concrete, it prevents dangerous radiation from escaping the reactor building.</li>
+              <li><strong className="text-white">Pressure Vessel:</strong> The inner casing holds the highly pressurized gas and the reactor core safely inside.</li>
+            </ul>
+          </div>
+
+          <div className="bg-slate-800/50 p-6 rounded-lg border border-emerald-700/40">
+            <h5 className="text-lg font-semibold text-emerald-400 mb-4">Cooling and Electricity Generation</h5>
+            <ul className="space-y-3">
+              <li><strong className="text-white">Coolant System:</strong> This system takes heat away from the core. The diagram shows a Gas Circulator pushing gas through Hot and Cool Gas Ducts.</li>
+              <li><strong className="text-white">Heat Exchanger:</strong> This is where the intense heat from the reactor's primary coolant loop is transferred to a secondary loop of water to create steam.</li>
+              <li><strong className="text-white">Steam Output:</strong> The pipe at the top right carries the newly created steam away. This steam is used to turn a turbine, producing electricity via electromagnetic induction.</li>
+            </ul>
+          </div>
+        </div>
+
         <h3 className="text-2xl font-semibold text-yellow-400 mt-8 mb-4">Breeder Reactors</h3>
         <p>Because natural U-235 is limited, a <strong>breeder reactor</strong> can be used to convert non-fissile U-238 into a new fissionable fuel, Plutonium-239, through this series of reactions:</p>
         <div className="bg-slate-900 p-6 rounded-lg overflow-x-auto my-6 border border-slate-700">
